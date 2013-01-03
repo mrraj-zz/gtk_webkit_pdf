@@ -1,0 +1,11 @@
+Creating The PDF from HTML using GTK WEBKIT Tool.
+
+EXAMPLE:
+
+webkit = GTK::Webkit.new("http://www.gtk.org", "gtk.pdf")  #creates the webkit object
+webkit.convert_to_pdf                                      #creates the pdf specified in the initialization parameter(in our case gtk.pdf) in current directory
+
+
+
+
+This is the first version of the gem, we will update the readme as well the gem features ASAP.
