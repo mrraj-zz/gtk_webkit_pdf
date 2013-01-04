@@ -2,9 +2,13 @@ Creating The PDF from HTML using GTK WEBKIT Tool.
 
 EXAMPLE:
 
-webkit = GTK::Webkit.new("http://www.gtk.org", "gtk.pdf")  #creates the webkit object
-webkit.convert_to_pdf                                      #creates the pdf specified in the initialization parameter(in our case gtk.pdf) in current directory
+webkit = GTK::Webkit.new(url)  #creates the webkit object
+webkit.convert_to_pdf(path, pdf_name)                                      #creates the pdf specified in the initialization parameter(in our case gtk.pdf) in current directory
 
+Parameters Description:
+1 . url => Actual webkit URL. Ex http://www.gtk.org/, http://www.google.com
+2 . path => System path, where the pdf will be saved. Ex: /home/user/Documents/
+3 . pdf_name => Actual name to PDF file. Ex: gtk.pdf, google.pdf 
 
 
 
