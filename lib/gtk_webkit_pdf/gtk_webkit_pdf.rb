@@ -1,10 +1,9 @@
 module GTK
   class Webkit
-    attr_accessor :webkit_url, :export_filename
+    attr_accessor :webkit_url
 
-    def initialize(webkit_url, export_filename)
+    def initialize(webkit_url)
       @webkit_url = webkit_url
-      @export_filename = export_filename
     end
   end
 end
