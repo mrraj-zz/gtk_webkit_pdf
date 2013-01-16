@@ -2,27 +2,25 @@ Creating The PDF from HTML using GTK WEBKIT Tool.
 
 MAIN FEATURE OF GTK_WEBKIT_PDF
 ==============================
-1 . This is pure ruby extension based pdf creator using gtk webkit api.
+  1 . This is pure ruby extension based pdf creator using gtk webkit api.
 
 FEATURE ADDED WITH THIS NEW VERSION 0.0.2
 =========================================
-1 . Supports for RAILS integration.
-2 . Create pdf based on the format in the controller with various options.
-3 . Supports for rake level pdf creation.
+  1 . Supports for RAILS integration.
+  2 . Create pdf based on the format in the controller with various options.
+  3 . Supports for rake level pdf creation.
 
 EXAMPLE:
 
-webkit = GTK::Webkit.new(string_data, format, options)  #creates the webkit object
-where "format" => 1 . 0(zero) - means you are giving the html string to the first parameter(that is string_data).
-                  2 . 1(one) - future usage.
-                  3 . 2(two) - means you are giving the URI to the first parameter(that is string_data).
+  webkit = GTK::Webkit.new(string_data, format, options)  #creates the webkit object
+  where "format" => 
+    1 . 0(zero) - means you are giving the html string to the first parameter(that is string_data).
+    2 . 1(one) - future usage.
+    3 . 2(two) - means you are giving the URI to the first parameter(that is string_data).
 
-printer = webkit.gtk_printer  #which returns the printer object, using this printer object you get the pdf content like below
-printer.pdf_content #returns pdf contenht as a string, then you can save this pdf content to a file or you can render using 
-                    #"send_data"(in the case of download)
-                    #You can also export to a file using the following
-printer.export(base_url, filename) #base_url => base directory(like /home/mohanraj/)
-                                   #filename => name of the file, you want to export
+  printer = webkit.gtk_printer  #which returns the printer object, using this printer object you get the pdf content like below
+  printer.pdf_content #returns pdf contenht as a string, then you can save this pdf content to a file or you can render using "send_data"(in the case of download). You can also export to a file using the following
+  printer.export(base_url, filename) #base_url => base directory(like /home/mohanraj/), filename => name of the file, you want to export
 
 CONTROLLER BASED PDF CREATION
 ============================
@@ -39,15 +37,15 @@ class UsersController < ApplicationController
   end
 end
 
-available options while rendering pdf, 
-:layout => specify the layout, otherwise layout is false
-:template => template name to render
-:file => file to use
-:disposition => default to "inline"
-:format =>
-:handler =>
+  available options while rendering pdf, 
+    :layout => specify the layout, otherwise layout is false
+    :template => template name to render
+    :file => file to use
+    :disposition => default to "inline"
+    :format =>
+    :handler =>
 
-NOTE: you have to create the view file for pdf like "index.pdf.erb" in the case of pdf render
+  NOTE: you have to create the view file for pdf like "index.pdf.erb" in the case of pdf render
 
 MIDDLEWARE SUPPORT
 ==================
