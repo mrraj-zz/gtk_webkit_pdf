@@ -5,7 +5,7 @@ void free_printer(void *void_printer) {
   free(printer);
 }
 
-void init_printer_configurations(VALUE self) {
+void set_printer_configurations(VALUE self) {
   PRINTER_PTR(self);
   printer -> gtk_print_settings = NULL;
   printer -> gtk_print_operation = gtk_print_operation_new();

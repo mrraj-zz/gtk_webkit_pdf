@@ -15,7 +15,7 @@ typedef struct {
 } printer_wrapper;
 
 extern void free_printer(void *void_printer);
-extern void init_printer_configurations(VALUE self);
+extern void set_printer_configurations(VALUE self);
 extern void begin_print();
 extern void draw_page();
  

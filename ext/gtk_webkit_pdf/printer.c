@@ -5,19 +5,23 @@
 
 VALUE cPrinter = Qnil;
 
-static VALUE c_printer_new(VALUE self) {
+static VALUE printer_allocate(VALUE klass) {
   printer_wrapper *printer;
-  VALUE data_object = Data_Make_Struct(self, printer_wrapper, 0, free_printer, printer);
-  gtk_init(NULL, NULL);
-  init_printer_configurations(data_object);
+  VALUE data_object = Data_Make_Struct(klass, printer_wrapper, 0, free_printer, printer);
   return data_object;
 }
 
-static VALUE c_export_to_pdf(VALUE self, VALUE source, VALUE directory_path, VALUE file_name) {
-  char *pdf_path;
+static VALUE c_webkit_webframe_to_pdf(VALUE self, VALUE source) {
+  VALUE temp_path;
   WEBKIT_PRINTER_PTR(self, source);
-  STR_CON_CAT(directory_path, file_name);
-  gtk_print_operation_set_export_filename(printer -> gtk_print_operation, pdf_path);
+  gtk_init(NULL, NULL);
+
+  //PRINTER CONFIGURATIONS
+  set_printer_configurations(self);
+
+  //EXPORT PDF FROM WEBKIT WEBFRAME
+  temp_path = rb_funcall(self, rb_intern("temp_path"), 0, 0);
+  gtk_print_operation_set_export_filename(printer -> gtk_print_operation, StringValuePtr(temp_path));
   printer -> gtk_print_operation_result = webkit_web_frame_print_full(webkit -> webkit_webframe,
                                          printer -> gtk_print_operation, GTK_PRINT_OPERATION_ACTION_EXPORT, NULL);
 
@@ -27,11 +31,12 @@ static VALUE c_export_to_pdf(VALUE self, VALUE source, VALUE directory_path, VAL
     printer -> print_status = Qtrue;
   }
   g_object_unref(printer -> gtk_print_operation);
-  return printer -> print_status;
+  return printer -> print_status == Qtrue ? self : Qnil;
 }
 
 void init_printer() {
   cPrinter = rb_define_class_under(cGTK, "Printer", rb_cObject);
-  rb_define_singleton_method(cPrinter, "new", c_printer_new, 0);
-  rb_define_private_method(cPrinter, "export_to_pdf", c_export_to_pdf, 3);
+  rb_define_alloc_func(cPrinter, printer_allocate);
+
+  rb_define_method(cPrinter, "webkit_webframe_to_pdf", c_webkit_webframe_to_pdf, 1);
 }
