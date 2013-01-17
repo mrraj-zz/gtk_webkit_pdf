@@ -52,4 +52,21 @@ MIDDLEWARE SUPPORT
   You can enable middleware by adding following line to config/application.rb
   config.middleware.use GTK::Middleware
 
+INSTALLATION
+============
+  1.You need to install the following development packages,
+    1 . gtk
+    2 . libsoup
+    3 . webkitgtk
+    4 . atk
+    5 . gdk-pixbuf
+    6 . glib
+    7 . cario
+    8 . pango
+  2.And the following the libs
+    1 . libgtk
+    2 . libwebkitgtk
+  3.NOTE: minimum gtk2 and webkitgtk2 is required.
+  4.Then you can install the gem whether directly or by using bundler.
+
 Thanks to GTK WEBKIT community.

@@ -7,7 +7,7 @@ require 'gtk_webkit_pdf/webkit'
 
 module GTK
   class Webkit
-    VERSION  = 0.0.2
+    VERSION  = "0.0.2"
     CONTENT  = 0
     FILEPATH = 1
     HTTP_URI = 2

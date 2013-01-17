@@ -14,7 +14,6 @@ static VALUE printer_allocate(VALUE klass) {
 static VALUE c_webkit_webframe_to_pdf(VALUE self, VALUE source) {
   VALUE temp_path;
   WEBKIT_PRINTER_PTR(self, source);
-  gtk_init(NULL, NULL);
 
   //PRINTER CONFIGURATIONS
   set_printer_configurations(self);

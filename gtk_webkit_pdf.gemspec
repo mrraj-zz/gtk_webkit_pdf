@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'gtk_webkit_pdf'
-  s.version     = '0.0.2'
+  s.version     = '0.0.2.1'
   s.date        = Time.now.strftime("%Y-%m-%d")
   s.summary     = "GTK WEBKIT"
   s.homepage    = "https://github.com/mohanraj-ramanujam/gtk_webkit_pdf"

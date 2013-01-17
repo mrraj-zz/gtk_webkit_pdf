@@ -15,7 +15,6 @@ static VALUE webkit_allocate(VALUE klass) {
 static VALUE c_generate_pdf(VALUE self) {
   VALUE source, content;
   WEBKIT_PTR(self);  
-  gtk_init(NULL, NULL);
 
   webkit -> webkit_webview = WEBKIT_WEB_VIEW(webkit_web_view_new());
   source = rb_iv_get(self, "@source");
@@ -38,6 +37,7 @@ static VALUE c_generate_pdf(VALUE self) {
 }
 
 void Init_webkit(void) {
+  gtk_init(NULL, NULL);
   cGTK = rb_define_module("GTK");
   cWebkit = rb_define_class_under(cGTK, "Webkit", rb_cObject);
 
